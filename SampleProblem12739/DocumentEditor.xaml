@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SampleProblem12739.DocumentEditor"
+             BackgroundColor="WhiteSmoke"
+             NavigationPage.IconColor="White"
+             Title="DocumentEditor">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Grid>
+                <StackLayout Padding="15">
+                    <ListView x:Name="ScanList_" CachingStrategy="RecycleElement" HasUnevenRows="False" SeparatorVisibility="Default" SeparatorColor="Gray">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                    </Grid.GestureRecognizers>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                    
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                
+                                    <Image Grid.Row="0" Grid.Column="0" Source="{Binding Image}"/>
+                                    <Label Grid.Row="0" Grid.Column="2" Text="{Binding Value}" TextColor="Black" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                    <Label Grid.Row="0" Grid.Column="2" Text="{Binding Path}" x:Name="Path" IsVisible="False"/>
+                                    <Label Grid.Row="0" Grid.Column="2" Text="{Binding FileName}" x:Name="FileName" IsVisible="False"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Grid x:Name="ButtonLayout" HorizontalOptions="EndAndExpand">
+                
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                    
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                    
+                        <Button x:Name="AddScan" Clicked="AddScan_Clicked" Grid.Row="0" Grid.Column="0" Text="Add Scan (Disabled)" TextColor="Black" BackgroundColor="LightGray" IsEnabled="False"></Button>                
+                
+                        <Button x:Name="SendDoc" Clicked="SendDoc_Clicked" Grid.Row="1" Grid.Column="0" Text="Send Document" TextColor="Black" BackgroundColor="LightGray"></Button>   
+                        
+                        <Button x:Name="DeleteDoc" Clicked="DeleteDoc_Clicked" Grid.Row="2" Grid.Column="0" Text="Delete Document (Disabled)" TextColor="Black" BackgroundColor="LightGray" IsEnabled="False"></Button>
+
+                
+                </Grid>
+                
+                </StackLayout>
+            </Grid>
+            <StackLayout
+                    x:Name="DialogBackGround"
+                    IsVisible="False"
+                    AbsoluteLayout.LayoutBounds="0,0,1,1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    BackgroundColor="Gray"
+                    Opacity="0.5"/>
+                <StackLayout x:Name="Dialog"
+                    IsVisible="False"
+                    AbsoluteLayout.LayoutBounds="0,0,1,1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Opacity="1"
+                    BackgroundColor="White">
+                    <StackLayout.Padding>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="Android" Value="10"/>
+                        </OnPlatform>
+                    </StackLayout.Padding>
+                    <StackLayout.Margin>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="Android" Value="30"/>
+                        </OnPlatform>
+                    </StackLayout.Margin>
+                    <StackLayout HorizontalOptions="CenterAndExpand" BackgroundColor="White">
+                        <StackLayout.Padding>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="iOS" Value="10"/>
+                            </OnPlatform>
+                        </StackLayout.Padding>
+                        <StackLayout.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="iOS" Value="30"/>
+                            </OnPlatform>
+                        </StackLayout.Margin>
+
+                        <Grid HorizontalOptions="CenterAndExpand">
+                
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                    
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                    
+                        <Label Grid.Row="0" x:Name="Title_" Padding="5" HorizontalOptions="Start" Text="Upload" FontSize="18"  TextColor="Black" FontAttributes="Bold"/>
+                        <Label Grid.Row="1" x:Name="Question_" Padding="5" HorizontalOptions="Start" Text="Uploading document..." FontSize="16"  TextColor="Black"/>
+                        <ProgressBar Grid.Row="2" x:Name="ProgressBar2_" Progress="0" ProgressColor="Blue"/>
+                    </Grid>
+                    </StackLayout>
+                
+                </StackLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

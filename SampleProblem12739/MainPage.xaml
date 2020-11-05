@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SampleProblem12739.MainPage"
+             BackgroundColor="WhiteSmoke"
+             NavigationPage.IconColor="White"
+             Title="MainPage">
+    <ContentPage.ToolbarItems> 
+        <ToolbarItem Icon="settings.png" Text="Test" Clicked="ToolbarItem_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <StackLayout>
+        <Button VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Text="Go to DocumentList Page" Clicked="Button_Clicked"/>
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SampleProblem12739.DocumentList"
+             BackgroundColor="WhiteSmoke"
+             NavigationPage.IconColor="White"
+             Title="DocumentList">
+    <ContentPage.Content>
+        <ScrollView>
+        <StackLayout Padding="15">
+                <ListView x:Name="DocList_" CachingStrategy="RecycleElement" HasUnevenRows="True" SeparatorVisibility="Default" SeparatorColor="Gray" IsVisible="true">
+                    <ListView.Header>
+                            <StackLayout>
+                                <StackLayout x:Name="LoadingContainer1" Padding="5" VerticalOptions="Center" HorizontalOptions="Center" IsVisible="False">
+                                <ActivityIndicator x:Name="LoadingJson1" IsRunning="False" Color="Black" BackgroundColor="Transparent" />
+                            </StackLayout>
+                            </StackLayout>
+                    </ListView.Header>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="15">
+                                    <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                  </Grid.GestureRecognizers>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                    
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                
+                                     <Label Text="{Binding DirName}" Grid.Row="0" Grid.Column="0" x:Name="DirName" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="Black"/>
+                                    <Label Text="{Binding ScanNum}" Grid.Row="0" Grid.Column="1" x:Name="ScanNum" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="Black"/>
+                                    <Label Text="{Binding LastChange}" Grid.Row="0" Grid.Column="2" x:Name="LastChange" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="Black"/>
+                                
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
